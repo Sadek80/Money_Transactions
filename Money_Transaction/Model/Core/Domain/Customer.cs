@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Money_Transaction.Model.Core.Domain
 {
@@ -20,6 +21,9 @@ namespace Money_Transaction.Model.Core.Domain
 
         [MaxLength(100)]
         public string ImageUrl { get; set; }
+
+        [MaxLength(200)]
+        public string Email { get; set; }
 
         public List<Transaction> SentTransactions { get; set; }
         public List<Transaction> RecievedTransactions { get; set; }

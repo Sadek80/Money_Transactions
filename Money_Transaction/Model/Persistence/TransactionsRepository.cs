@@ -1,4 +1,5 @@
-﻿using Money_Transaction.Model.Core.Domain;
+﻿using Microsoft.EntityFrameworkCore;
+using Money_Transaction.Model.Core.Domain;
 using Money_Transaction.Model.Core.Repositories;
 using System;
 using System.Collections.Generic;
@@ -17,12 +18,17 @@ namespace Money_Transaction.Model.Persistence
         }
         public IEnumerable<Transaction> GetAllTransactions()
         {
-            return _dataContext.Transactions;
+            return _dataContext.Transactions.Include(t => t.Sender).Include(t => t.Reciever);
         }
 
         public IEnumerable<Transaction> GetRecentTransactions()
         {
             return _dataContext.Transactions.OrderByDescending(t => t.Date).Take(5);
+        }
+
+        public int GetTransactionsCount()
+        {
+            return _dataContext.Transactions.Count();
         }
 
         public bool MakeTransaction(Transaction transaction, Guid senderId, Guid recieverId)

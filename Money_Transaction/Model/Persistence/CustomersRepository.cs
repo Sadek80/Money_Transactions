@@ -52,5 +52,10 @@ namespace Money_Transaction.Model.Persistence
 
             return _dataContext.Customers.FirstOrDefault(c => c.Id == CustomerId);
         }
+
+        public int GetCustomerCount()
+        {
+            return _dataContext.Customers.Count();
+        }
     }
 }

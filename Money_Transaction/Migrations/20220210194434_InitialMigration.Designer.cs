@@ -10,7 +10,7 @@ using Money_Transaction.Model;
 namespace Money_Transaction.Migrations
 {
     [DbContext(typeof(AppDataContext))]
-    [Migration("20220207143630_InitialMigration")]
+    [Migration("20220210194434_InitialMigration")]
     partial class InitialMigration
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -30,6 +30,10 @@ namespace Money_Transaction.Migrations
 
                     b.Property<double>("Balance")
                         .HasColumnType("float");
+
+                    b.Property<string>("Email")
+                        .HasMaxLength(200)
+                        .HasColumnType("nvarchar(200)");
 
                     b.Property<string>("FirstName")
                         .IsRequired()

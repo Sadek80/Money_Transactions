@@ -28,7 +28,7 @@ namespace Money_Transaction.Model
             modelBuilder.Entity<Transaction>()
                 .HasOne(t => t.Reciever)
                 .WithMany(c => c.RecievedTransactions)
-                .IsRequired();
+                .IsRequired();            
         }
     }
 }

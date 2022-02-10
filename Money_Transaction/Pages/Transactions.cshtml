@@ -1,0 +1,70 @@
+﻿@page
+@model Money_Transaction.Pages.TransactionsModel
+@{
+    ViewData["Title"] = "Transactions";
+
+}
+@using Money_Transaction.Helpers
+
+<main class="transactions-main">
+    <h2>Transactions</h2>
+    <section class="insights">
+        <div class="insights-transaction">
+            <div class="insights-icons Transactions">
+                <img src="./Images/transfer.png" alt="Transactions" class="icons">
+            </div>
+            <div class="insights-details">
+                <h3 class="text-muted">Total Transactions</h3>
+                <h2>@Model.NumOfTransactions</h2>
+            </div>
+        </div>
+    </section>
+    <section class="Transactions-list">
+        <div class="list-section">
+            <div class="table-wrap">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Sender</th>
+                            <th>Reciever</th>
+                            <th>Amount</th>
+                            <th>Type</th>
+                            <th>Date</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var transaction in Model.Transactions)
+                        {
+                            <tr>
+                                <td>@transaction.Id.GetGuidFormatted()</td>
+                                <td>
+                                    <div class="center-customer">
+                                        <div class="customer-name">
+                                            <img src=@transaction.Sender.ImageUrl alt="9" class="profile-img">
+                                            @transaction.Sender.FirstName @transaction.Sender.LastName
+                                        </div>
+                                    </div>
+                                   
+                                </td>
+                                <td>
+                                    <div class="center-customer">
+                                        <div class="customer-name">
+                                            <img src=@transaction.Reciever.ImageUrl alt="9" class="profile-img">
+                                            @transaction.Reciever.FirstName @transaction.Reciever.LastName
+
+                                        </div>
+                                    </div>   
+                                </td>
+                                <td>$@transaction.Amount</td>
+                                <td>@transaction.Type</td>
+                                <td>@transaction.Date.GetDateFormattedWithTime()</td>
+                            </tr>
+                        }
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+</main>
