@@ -11,6 +11,7 @@ namespace Money_Transaction.Model.Core.Repositories
         IEnumerable<Customer> GetAllCustomers();
         IEnumerable<Customer> GetAllCustomersExceptSender(Guid? CustomerId);
         Customer GetCusomerById(Guid CustomerId);
+        Customer GetCusomerByIdWithTransactions(Guid CustomerId);
 
 
     }

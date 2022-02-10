@@ -31,7 +31,7 @@ namespace Money_Transaction.Model.Persistence
             return _dataContext.Customers.Where(c => c.Id != CustomerId);
         }
 
-        public Customer GetCusomerById(Guid CustomerId)
+        public Customer GetCusomerByIdWithTransactions(Guid CustomerId)
         {
             if (CustomerId == Guid.Empty)
             {
@@ -41,6 +41,16 @@ namespace Money_Transaction.Model.Persistence
                                .Include(c => c.SentTransactions)
                                .Include(c => c.RecievedTransactions)
                                .FirstOrDefault(c => c.Id == CustomerId);
+        }
+
+        public Customer GetCusomerById(Guid CustomerId)
+        {
+            if (CustomerId == Guid.Empty)
+            {
+                throw new ArgumentNullException(nameof(CustomerId));
+            }
+
+            return _dataContext.Customers.FirstOrDefault(c => c.Id == CustomerId);
         }
     }
 }
