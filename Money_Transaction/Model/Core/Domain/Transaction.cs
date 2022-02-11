@@ -11,7 +11,7 @@ namespace Money_Transaction.Model.Core.Domain
     public class Transaction
     {
         [Key]
-        [MaxLength(10)]
+        //[MaxLength(10)]
         public Guid Id { get; set; }
 
         [ForeignKey("SenderId")]
@@ -20,8 +20,10 @@ namespace Money_Transaction.Model.Core.Domain
         [ForeignKey("RecieverId")]
         public Customer Reciever { get; set; }
 
+        [Required]
         public Guid SenderId { get; set; }
 
+        [Required(ErrorMessage = "You should choose a reciever first")]
         public Guid RecieverId { get; set; }
 
         public double Amount { get; set; }

@@ -8,7 +8,7 @@ namespace Money_Transaction.Model.Core.Domain
     public class Customer
     {
         [Key]
-        [MaxLength(10)]
+        //[MaxLength(10)]
         public Guid Id { get; set; }
 
         [Required]

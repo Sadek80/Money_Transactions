@@ -5,14 +5,15 @@
 
 }
 
+@using Money_Transaction.Helpers
 
 <main class="container-profile">
     <section>
         <section class="customer-info">
             <div>
-                <img src="./Images/profile-pic/3.jpg" alt="3" class="profile-img-customer">
-                <h3>Mohamed Sadek</h3>
-                <b class="text-muted">mohamedsadk80@gmail.com</b>
+                <img src=@Model.customer.ImageUrl alt="3" class="profile-img-customer">
+                <h3>@Model.customer.FirstName @Model.customer.LastName</h3>
+                <b class="text-muted">@Model.customer.Email</b>
             </div>
 
             <div class="applied-card">
@@ -29,13 +30,13 @@
                             <p>6306</p>
                         </div>
                         <div class="holder">
-                            <p>Mohamed Sadek</p>
+                            <p>@Model.customer.FirstName @Model.customer.LastName</p>
                             <p>04/22</p>
                         </div>
                     </div>
                     <div class="balance">
                         <h3 class="text-muted">Balance</h3>
-                        <h2>$32000</h2>
+                        <h2>$@Model.customer.Balance</h2>
                     </div>
                 </div>
 
@@ -51,103 +52,48 @@
     </section>
     <aside>
         <section class="aside">
-            <h2>Mohameds' Transactions</h2>
+            <h2>@Model.customer.FirstName s' Transactions</h2>
             <section class="customer-transaction">
                 <div class="customer-transaction-wrap">
-                    <div class="transaction-customer">
-                        <div class="left">
-                            <img src="./Images/send.png" alt="transfer" class="icons">
-                            <div class="transaction-details">
-                                <h3>To Sha3ban</h3>
-                                <small class="text-muted"> Send  &bull; Aug 18, 2021 </small>
+
+                    @if (Model.AllRelatedTransactions.Count == 0)
+                    {
+                        <h2>No Transactions Yet</h2>
+                    }
+
+                    @foreach (var transaction in Model.AllRelatedTransactions)
+                    {
+                        if (transaction.SenderId == Model.customer.Id)
+                        {
+                            <div class="transaction-customer">
+                                <div class="left">
+                                    <img src="./Images/send.png" alt="transfer" class="icons">
+                                    <div class="transaction-details">
+                                        <h3>To @transaction.Reciever.FirstName</h3>
+                                        <small class="text-muted"> Send  &bull; @transaction.Date.GetDateFormatted() </small>
+                                    </div>
+                                </div>
+                                <b>-$@transaction.Amount</b>
                             </div>
-                        </div>
-                        <b>-$3200</b>
-                    </div>
-                    <div class="transaction-customer">
-                        <div class="left">
-                            <img src="./Images/recieve.png" alt="transfer" class="icons">
-                            <div class="transaction-details">
-                                <h3>From Sha3ban</h3>
-                                <small class="text-muted"> Recieve  &bull; Aug 18, 2021 </small>
+                        }
+                        else
+                        {
+                            <div class="transaction-customer">
+                                <div class="left">
+                                    <img src="./Images/recieve.png" alt="transfer" class="icons">
+                                    <div class="transaction-details">
+                                        <h3>From @transaction.Sender.FirstName</h3>
+                                        <small class="text-muted"> Recieve  &bull; @transaction.Date.GetDateFormatted()</small>
+                                    </div>
+                                </div>
+                                <b>+$@transaction.Amount</b>
                             </div>
-                        </div>
-                        <b>+$3200</b>
-                    </div>
-                    <div class="transaction-customer">
-                        <div class="left">
-                            <img src="./Images/send.png" alt="transfer" class="icons">
-                            <div class="transaction-details">
-                                <h3>To Sha3ban</h3>
-                                <small class="text-muted"> Send  &bull; Aug 18, 2021 </small>
-                            </div>
-                        </div>
-                        <b>-$3200</b>
-                    </div>
-                    <div class="transaction-customer">
-                        <div class="left">
-                            <img src="./Images/recieve.png" alt="transfer" class="icons">
-                            <div class="transaction-details">
-                                <h3>From Sha3ban</h3>
-                                <small class="text-muted"> Recieve  &bull; Aug 18, 2021 </small>
-                            </div>
-                        </div>
-                        <b>+$3200</b>
-                    </div>
-                    <div class="transaction-customer">
-                        <div class="left">
-                            <img src="./Images/send.png" alt="transfer" class="icons">
-                            <div class="transaction-details">
-                                <h3>To Sha3ban</h3>
-                                <small class="text-muted"> Send  &bull; Aug 18, 2021 </small>
-                            </div>
-                        </div>
-                        <b>-$3200</b>
-                    </div>
-                    <div class="transaction-customer">
-                        <div class="left">
-                            <img src="./Images/recieve.png" alt="transfer" class="icons">
-                            <div class="transaction-details">
-                                <h3>From Sha3ban</h3>
-                                <small class="text-muted"> Recieve  &bull; Aug 18, 2021 </small>
-                            </div>
-                        </div>
-                        <b>+$3200</b>
-                    </div>
-                    <div class="transaction-customer">
-                        <div class="left">
-                            <img src="./Images/send.png" alt="transfer" class="icons">
-                            <div class="transaction-details">
-                                <h3>To Sha3ban</h3>
-                                <small class="text-muted"> Send  &bull; Aug 18, 2021 </small>
-                            </div>
-                        </div>
-                        <b>-$3200</b>
-                    </div>
-                    <div class="transaction-customer">
-                        <div class="left">
-                            <img src="./Images/send.png" alt="transfer" class="icons">
-                            <div class="transaction-details">
-                                <h3>To Sha3ban</h3>
-                                <small class="text-muted"> Send  &bull; Aug 18, 2021 </small>
-                            </div>
-                        </div>
-                        <b>-$3200</b>
-                    </div>
-                    <div class="transaction-customer">
-                        <div class="left">
-                            <img src="./Images/send.png" alt="transfer" class="icons">
-                            <div class="transaction-details">
-                                <h3>To Sha3ban</h3>
-                                <small class="text-muted"> Send  &bull; Aug 18, 2021 </small>
-                            </div>
-                        </div>
-                        <b>-$3200</b>
-                    </div>
+                        }
+                    }
                 </div>
             </section>
         </section>
-        <a href="./TransferMoney.html">
+        <a asp-page="/TransferMoney" asp-route-customerId="@Model.customer.Id">
             <div class="make-transaction">
                 <span class="material-icons-sharp">
                     add

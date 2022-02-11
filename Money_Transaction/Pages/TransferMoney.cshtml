@@ -10,9 +10,12 @@
 <main>
     <h2>Transfer Money</h2>
     <h3 class="tex-muted" style="margin-top: 1rem;">
-        Balance: $<b id="balance">32000</b></p>
+        <div asp-validation-summary="All" class="text-danger"></div>
+
+        Balance: $<b id="balance">@Model.Sender.Balance</b></p>
         <section class="form">
-            <form action="post">
+            <form method="post">
+
                 <div class="inputs">
                     <div class="input-card">
                         <div>
@@ -20,8 +23,9 @@
 
                         </div>
                         <div class="customer-name sender">
-                            <input type="text" name="senderId" value="2000" hidden>
-                            <img src="./Images/profile-pic/3.jpg" alt="8" class="profile-img"> Mohamed Sadek
+                            <input type="text" name="senderId" asp-for="@Model.Transaction.SenderId" value=@Model.Sender.Id hidden>
+                            <img src=@Model.Sender.ImageUrl alt="8" class="profile-img">
+                            @Model.Sender.FirstName @Model.Sender.LastName
                         </div>
                     </div>
 
@@ -31,26 +35,19 @@
                         </div>
                         <div class="select-box">
                             <div class="options-container">
-                                <div class="option">
-                                    <label for="8888" class="customer-name">
-                                        <input type="radio" class="radio" name="recieverId" id="8888" value="8888" required />
-                                        <img src="./Images/profile-pic/3.jpg" alt="8" class="profile-img"> Mohamed Sadek
-                                    </label>
-                                </div>
+                                @foreach (var reciever in Model.CustomersList)
+                                {
+                                    <div class="option">
+                                        <label asp-for=@reciever.Id for="@reciever.Id" class="customer-name">
+                                            <input type="radio" class="radio" name="recieverId" id="@reciever.Id" asp-for=@Model.Transaction.RecieverId
+                                                   value=@reciever.Id required />
+                                            <span asp-validation-for="@Model.Transaction.RecieverId" class="text-danger"></span>
 
-
-                                <div class="option">
-                                    <label for="9999" class="customer-name">
-                                        <input type="radio" class="radio" name="recieverId" id="9999" value="9999" required />
-                                        <img src="./Images/profile-pic/1.jpg" alt="8" class="profile-img"> Ali Yasser
-                                    </label>
-                                </div>
-
-
-                                <div class="option" hidden>
-                                    <input type="radio" class="radio" id="tutorials" name="recieverId" hidden />
-                                    <label for="tutorials" hidden>Tutorials</label>
-                                </div>
+                                            <img src=@reciever.ImageUrl alt="8" class="profile-img">
+                                            @reciever.FirstName @reciever.LastName
+                                        </label>
+                                    </div>
+                                }
                             </div>
 
                             <div class="customer-name-dropdown">
@@ -75,8 +72,8 @@
                     <div class="money-card">
                         <p class="text-muted">You Send</p>
                         <div class="amount">
-                            <label for="amount"><h3>$</h3></label>
-                            <input type="number" class="input-number" oninput="amountCalc()" id="amount" name="amount"
+                            <label asp-for="@Model.Transaction.Amount"><h3>$</h3></label>
+                            <input type="number" class="input-number" oninput="amountCalc()" id="amount" asp-for="@Model.Transaction.Amount" name="amount"
                                    placeholder="Enter the amount" required>
                         </div>
                     </div>
@@ -97,7 +94,7 @@
                     <div class="type-input">
                         <div class="radio-buttons">
                             <label class="custom-radio" onclick="amountCalc()">
-                                <input type="radio" name="type" value="standard" checked />
+                                <input type="radio" name="type" asp-for="@Model.Transaction.Type" value="standard" checked />
                                 <span class="radio-btn">
                                     <i class="las la-check"></i>
                                     <div class="hobbies-icon">
@@ -107,7 +104,7 @@
                                 </span>
                             </label>
                             <label class="custom-radio" onclick="amountCalc()">
-                                <input type="radio" name="type" value="express" />
+                                <input type="radio" name="type" asp-for="@Model.Transaction.Type" value="express" />
                                 <span class="radio-btn">
                                     <i class="las la-check"></i>
                                     <div class="hobbies-icon">
@@ -129,3 +126,12 @@
             </form>
         </section>
 </main>
+
+
+
+
+@section Scripts{
+    @{
+        <partial name="_ValidationScriptsPartial" />
+    }
+}

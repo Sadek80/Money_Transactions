@@ -1,16 +1,16 @@
-const anchors = document.querySelectorAll(".sidebar a");
+// const anchors = document.querySelectorAll(".sidebar a");
 
-console.log(anchors)
+// console.log(anchors)
 
-anchors.forEach(a => {
-  a.addEventListener("click", () => {
-    console.log(anchors)
-    anchors.forEach(a => {
-      a.classList.remove("active");
-    })
-    a.classList.add("active")
-  });
-});
+// anchors.forEach(a => {
+//   a.addEventListener("click", () => {
+//     console.log(anchors)
+//     anchors.forEach(a => {
+//       a.classList.remove("active");
+//     })
+//     a.classList.add("active")
+//   });
+// });
 
 
 
@@ -78,7 +78,7 @@ searchBox.addEventListener("keyup", function(e) {
 const filterList = searchTerm => {
   searchTerm = searchTerm.toLowerCase();
   optionsList.forEach(option => {
-    let label = option.firstElementChild.nextElementSibling.innerText.toLowerCase();
+    let label = option.innerText.toLowerCase();
     if (label.indexOf(searchTerm) != -1) {
       option.style.display = "block";
     } else {

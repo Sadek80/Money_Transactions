@@ -18,7 +18,7 @@ namespace Money_Transaction.Model.Persistence
         }
         public IEnumerable<Transaction> GetAllTransactions()
         {
-            return _dataContext.Transactions.Include(t => t.Sender).Include(t => t.Reciever);
+            return _dataContext.Transactions.Include(t => t.Sender).Include(t => t.Reciever).OrderByDescending(t => t.Date);
         }
 
         public IEnumerable<Transaction> GetRecentTransactions()

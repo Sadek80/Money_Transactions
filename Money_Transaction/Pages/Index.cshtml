@@ -53,7 +53,7 @@
                                     </td>
                                     <td>@Customer.Email</td>
                                     <td>$@Customer.Balance</td>
-                                    <td> <a class="show-color" href="./Customer.html">Show</a></td>
+                                    <td> <a class="show-color" asp-page="/Customer" asp-route-customerId="@Customer.Id">Show</a></td>
                                 </tr>
                             }
                         </tbody>

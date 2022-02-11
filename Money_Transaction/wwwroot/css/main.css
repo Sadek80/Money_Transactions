@@ -955,3 +955,9 @@ input[type="number"]::-webkit-outer-spin-button {
 .option .customer-name {
   justify-content: flex-start;
 }
+
+
+.validation {
+    margin-top: 1rem;
+    color: var(--color-danger);
+}

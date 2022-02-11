@@ -39,7 +39,9 @@ namespace Money_Transaction.Model.Persistence
             }
             return _dataContext.Customers
                                .Include(c => c.SentTransactions)
+                               .ThenInclude(t => t.Reciever)
                                .Include(c => c.RecievedTransactions)
+                               .ThenInclude(t => t.Sender)
                                .FirstOrDefault(c => c.Id == CustomerId);
         }
 
