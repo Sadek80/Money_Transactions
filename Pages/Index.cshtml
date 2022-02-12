@@ -1,0 +1,84 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Home";
+}
+@using Money_Transaction.Helpers
+<main class="home-main">
+    <section>
+        <h2>Home</h2>
+        <section class="insights">
+            <div>
+                <div class="insights-icons Transactions">
+                    <img src="~/Images/transfer.png" alt="Transactions" class="icons">
+                </div>
+                <div class="insights-details">
+                    <h3 class="text-muted">Total Transactions</h3>
+                    <h2>@Model.NumOfTransactions</h2>
+                </div>
+            </div>
+            <div>
+                <div class="insights-icons Customers">
+                    <span class="material-icons-sharp md-24">
+                        person_outline
+                    </span>
+                </div>
+                <div class="insights-details">
+                    <h3 class="text-muted">Total Customers</h3>
+                    <h2>@Model.NumOfCustomers</h2>
+                </div>
+            </div>
+        </section>
+        <section class="customers-list">
+            <h2>Customers</h2>
+            <div class="list-section">
+                <div class="table-wrap">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Customer</th>
+                                <th>Email</th>
+                                <th>Balance</th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var Customer in Model.Customers)
+                            {
+                                <tr>
+                                    <td>
+                                        <div class="customer-name">
+                                            <img src=@Customer.ImageUrl alt="9" class="profile-img"> @Customer.FirstName @Customer.LastName
+                                        </div>
+                                    </td>
+                                    <td>@Customer.Email</td>
+                                    <td>$@Customer.Balance</td>
+                                    <td> <a class="show-color" asp-page="/Customer" asp-route-customerId="@Customer.Id">Show</a></td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+    </section>
+
+    <aside class="aside">
+        <h2>Recent Transactions</h2>
+        <section class="recent-transactions">
+            @foreach (var transaction in Model.Transactions)
+            {
+                <div class="transaction">
+                    <div class="left">
+                        <img src="./Images/transfer.png" alt="transfer" class="icons">
+                        <div class="transaction-details">
+                            <h3>@transaction.Sender.LastName To @transaction.Reciever.LastName </h3>
+                            <small class="text-muted"> @transaction.Type  &bull; @transaction.Date.GetDateFormatted() </small>
+                        </div>
+                    </div>
+                    <b>$@transaction.Amount</b>
+                </div>
+            }
+        </section>
+    </aside>
+</main>
