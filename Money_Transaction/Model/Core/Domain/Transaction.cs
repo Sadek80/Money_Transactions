@@ -11,7 +11,6 @@ namespace Money_Transaction.Model.Core.Domain
     public class Transaction
     {
         [Key]
-        //[MaxLength(10)]
         public Guid Id { get; set; }
 
         [ForeignKey("SenderId")]
