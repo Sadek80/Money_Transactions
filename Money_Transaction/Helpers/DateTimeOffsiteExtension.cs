@@ -14,7 +14,7 @@ namespace Money_Transaction.Helpers
 
         public static string GetDateFormattedWithTime(this DateTimeOffset dateTimeOffset)
         {
-            return dateTimeOffset.ToString("MMM dd, yyyy 'at' HH:mm tt");
+            return dateTimeOffset.ToString("MMM dd, yyyy 'at' h:mm tt");
         }
     }
 }

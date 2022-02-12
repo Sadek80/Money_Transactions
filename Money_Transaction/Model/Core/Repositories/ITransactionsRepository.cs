@@ -10,7 +10,6 @@ namespace Money_Transaction.Model.Core.Repositories
     {
         IEnumerable<Transaction> GetAllTransactions();
         IEnumerable<Transaction> GetRecentTransactions();
-        bool MakeTransaction(Transaction transaction, Guid senderId, Guid recieverId);
         int GetTransactionsCount();
     }
 }

@@ -222,22 +222,8 @@ nav .top .logo {
   -o-transform: scale3d(1.1, 1.1, 1.1);
 }
 
-.sidebar a.active::before {
-  position: absolute;
-  width: 95%;
-  height: 100%;
-  border: 0.5px solid var(--color-primary-light);
-  content: "";
-  top: -0.2px;
-  left: -0.8rem;
-  border-radius: 136px 36px 164px;
-  -webkit-border-radius: 136px 36px 164px;
-  -moz-border-radius: 136px 36px 164px;
-  -ms-border-radius: 136px 36px 164px;
-  -o-border-radius: 136px 36px 164px;
-}
 
-.sidebar a:hover {
+.sidebar .anchor:hover {
   transform: scale3d(1.1, 1.1, 1.1);
   -webkit-transform: scale3d(1.1, 1.1, 1.1);
   -moz-transform: scale3d(1.1, 1.1, 1.1);

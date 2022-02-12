@@ -23,9 +23,9 @@ namespace Money_Transaction.Model.Core.Domain
         [Required]
         public Guid SenderId { get; set; }
 
-        [Required(ErrorMessage = "You should choose a reciever first")]
         public Guid RecieverId { get; set; }
 
+        [Required]
         public double Amount { get; set; }
 
         public TransactionType Type { get; set; }

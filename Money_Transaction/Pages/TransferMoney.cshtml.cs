@@ -31,25 +31,10 @@ namespace Money_Transaction.Pages
 
         public async Task<IActionResult> OnPost()
         {
-            Transaction.Id = Guid.NewGuid();
-            Sender = _customersRepository.GetCusomerById(Transaction.SenderId);
-            if(Transaction.Amount < 0)
-                ModelState.AddModelError("Transaction.Amount", "Unrecognized Transaction Amount");
 
+            _customersRepository.MakeTransaction(Transaction);
 
-            if (Transaction.Amount > Sender.Balance)
-            {
-                ModelState.AddModelError("Transaction.Amount", "Transaction Amount Exceeds The Sender Balance");
-            }
-
-            //if (ModelState.IsValid)
-            //{
-            //    await _db.Category.AddAsync(Category);
-            //    await _db.SaveChangesAsync();
-            //    TempData["success"] = "Category created successfully";
-            //    return RedirectToPage("Index");
-            //}
-            return Page(Sender, Transaction);
+            return RedirectToPage("/Index");
         }
     }
 }

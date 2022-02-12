@@ -31,24 +31,6 @@ namespace Money_Transaction.Model.Persistence
             return _dataContext.Transactions.Count();
         }
 
-        public bool MakeTransaction(Transaction transaction, Guid senderId, Guid recieverId)
-        {
-            if (senderId == Guid.Empty)
-                throw new ArgumentNullException(nameof(senderId));
-
-            if (recieverId == Guid.Empty)
-                throw new ArgumentNullException(nameof(recieverId));
-
-            if (transaction == null)
-                throw new ArgumentNullException(nameof(transaction));
-
-            transaction.SenderId = senderId;
-            transaction.RecieverId = recieverId;
-
-            _dataContext.Transactions.Add(transaction);
-            _dataContext.SaveChanges();
-
-            return (_dataContext.SaveChanges() >= 0);
-        }
+      
     }
 }

@@ -59,5 +59,33 @@ namespace Money_Transaction.Model.Persistence
         {
             return _dataContext.Customers.Count();
         }
+
+        public bool MakeTransaction(Transaction transaction)
+        {
+            if (transaction == null)
+                throw new ArgumentNullException(nameof(transaction));
+
+            transaction.Id = Guid.NewGuid();
+            transaction.Date = DateTimeOffset.Now;
+
+            var reciever = GetCusomerById(transaction.RecieverId);
+            var sender = GetCusomerById(transaction.SenderId);
+
+            if (transaction.Type == TransactionType.Express)
+            {
+               
+                reciever.Balance += transaction.Amount - 1.50;
+            }
+            else
+            {
+                reciever.Balance += transaction.Amount - 0.99;
+            }
+
+            sender.Balance -= transaction.Amount; 
+
+            _dataContext.Transactions.Add(transaction);
+
+            return (_dataContext.SaveChanges() >= 0);
+        }
     }
 }

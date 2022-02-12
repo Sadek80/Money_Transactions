@@ -1,16 +1,16 @@
-// const anchors = document.querySelectorAll(".sidebar a");
+ const anchors = document.querySelectorAll(".sidebar a");
 
-// console.log(anchors)
+ console.log(anchors)
 
-// anchors.forEach(a => {
-//   a.addEventListener("click", () => {
-//     console.log(anchors)
-//     anchors.forEach(a => {
-//       a.classList.remove("active");
-//     })
-//     a.classList.add("active")
-//   });
-// });
+ anchors.forEach(a => {
+   a.addEventListener("click", () => {
+     console.log(anchors)
+     anchors.forEach(a => {
+       a.classList.remove("active");
+     })
+     a.classList.add("active")
+   });
+ });
 
 
 
@@ -34,7 +34,63 @@ selected.addEventListener("click", () => {
 });
 
 
+function validate() {
+    var form = document.transaction_form;
+    var amount = form.amount.value;
+    console.log(amount);
+    console.log(form.recieverId)
+    var balance = document.getElementById("balance").innerText;
+    var validation = document.getElementById("validation");
+    console.log(validation);
 
+    validation.innerHTML = "";
+
+    var amount = form.amount.value;
+    console.log(amount);
+
+    valid = true;
+
+    if (amount == "") {
+        validation.innerHTML += "<li>Amount is required<li>";
+        valid = false
+    }
+
+
+    if (+amount > +balance && amount != "") {
+        validation.innerHTML += "<li>Amount exceeds the balance</li>";
+        valid = false
+    }
+
+    var recipient = document.getElementById("recipient").value;
+
+
+    if ((+recipient <= 0  || +amount <= 0 ) && amount != "") {
+        validation.innerHTML += "<li>Unrecognized Amount Value</li>";
+        valid = false;
+    }
+
+    var reciverValid = false;
+    var reciverId = form.recieverId;
+
+
+    for (var i = 0; i < reciverId.length; i++) {
+        if (reciverId[i].checked) {
+            reciverValid = true;
+            break;
+        }
+
+    }
+
+    if (!reciverValid) {
+        validation.innerHTML += "<li>Choose Reciever First</li>";
+        valid = false;
+    }
+
+    if (!valid) {
+        return false;
+    }
+
+}
 
 function amountCalc(){
   // var balance = document.getElementById("balance").innerHTML.value;

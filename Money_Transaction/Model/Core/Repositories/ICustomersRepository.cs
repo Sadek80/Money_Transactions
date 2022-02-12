@@ -13,6 +13,7 @@ namespace Money_Transaction.Model.Core.Repositories
         Customer GetCusomerById(Guid CustomerId);
         Customer GetCusomerByIdWithTransactions(Guid CustomerId);
         int GetCustomerCount();
+        bool MakeTransaction(Transaction transaction);
 
 
     }

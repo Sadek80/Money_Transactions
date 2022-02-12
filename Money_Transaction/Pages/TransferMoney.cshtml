@@ -10,11 +10,12 @@
 <main>
     <h2>Transfer Money</h2>
     <h3 class="tex-muted" style="margin-top: 1rem;">
-        <div asp-validation-summary="All" class="text-danger"></div>
 
         Balance: $<b id="balance">@Model.Sender.Balance</b></p>
         <section class="form">
-            <form method="post">
+            <form method="post" onsubmit="return validate()" name="transaction_form" novalidate>
+                <div class="validation" id="validation" >
+                </div>
 
                 <div class="inputs">
                     <div class="input-card">
@@ -38,10 +39,9 @@
                                 @foreach (var reciever in Model.CustomersList)
                                 {
                                     <div class="option">
-                                        <label asp-for=@reciever.Id for="@reciever.Id" class="customer-name">
+                                        <label asp-for=@Model.Transaction.RecieverId for="@reciever.Id" class="customer-name">
                                             <input type="radio" class="radio" name="recieverId" id="@reciever.Id" asp-for=@Model.Transaction.RecieverId
                                                    value=@reciever.Id required />
-                                            <span asp-validation-for="@Model.Transaction.RecieverId" class="text-danger"></span>
 
                                             <img src=@reciever.ImageUrl alt="8" class="profile-img">
                                             @reciever.FirstName @reciever.LastName
