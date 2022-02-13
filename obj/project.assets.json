@@ -5801,11 +5801,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\Study\\.NET Projects\\Money Transaction\\Money_Transaction\\Money_Transaction.csproj",
+      "projectUniqueName": "D:\\Study\\.NET Projects\\Money Transaction\\Money_Transaction.csproj",
       "projectName": "Money_Transaction",
-      "projectPath": "D:\\Study\\.NET Projects\\Money Transaction\\Money_Transaction\\Money_Transaction.csproj",
+      "projectPath": "D:\\Study\\.NET Projects\\Money Transaction\\Money_Transaction.csproj",
       "packagesPath": "C:\\Users\\Sadek\\.nuget\\packages\\",
-      "outputPath": "D:\\Study\\.NET Projects\\Money Transaction\\Money_Transaction\\obj\\",
+      "outputPath": "D:\\Study\\.NET Projects\\Money Transaction\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\Sadek\\AppData\\Roaming\\NuGet\\NuGet.Config",

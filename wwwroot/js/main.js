@@ -1,17 +1,65 @@
- const anchors = document.querySelectorAll(".sidebar a");
+var nav = document.querySelector("nav");
+var closeBtn = document.getElementById('close-btn');
+var menu = document.getElementById('menu-btn');
 
- console.log(anchors)
+const startQueries = () => {
+  let newQuery = window.matchMedia( 'screen and (max-width: 1200px)' )
+  console.log(nav);
+  nav.style.display = 'block';
+  
+    var dates = document.querySelectorAll(".date");
+    if(dates.length > 0){
+      done = false;
+      if(newQuery.matches && done == false){  
+        dates.forEach(d => {
+         d.innerHTML = d.innerHTML.substring(0,12)
+         done = true;
+        });
+      }
+      else{
+        dates.forEach(d => {
+         d.innerHTML = d.innerHTML;
+         done = false;
+        });
+      }
+    }
+}
 
- anchors.forEach(a => {
-   a.addEventListener("click", () => {
-     console.log(anchors)
-     anchors.forEach(a => {
-       a.classList.remove("active");
-     })
-     a.classList.add("active")
-   });
+
+const startMobileQueries = () => {
+  let newQuery = window.matchMedia( 'screen and (max-width: 736px)' )
+  console.log(nav);
+  
+  // nav.style.display = 'none';
+
+    var transactio_main = document.querySelector(".transactions-main");
+    console.log(transactio_main);
+    if(transactio_main != undefined){
+      transactio_main.setAttribute('class', '')
+    }
+}
+
+window.addEventListener('resize', () => {
+ startQueries();
+ startMobileQueries();
+
+});
+
+
+window.addEventListener('load', () => {
+  startQueries();
+  startMobileQueries();
+ 
  });
 
+
+menu.addEventListener('click', () => {
+  nav.style.display = 'block'
+});
+
+closeBtn.addEventListener('click', () =>{
+  nav.style.display = 'none';
+})
 
 
 

@@ -41,19 +41,19 @@ html {
   scrollbar-color: var(--color-primary-light) rgba(0, 0, 0, 0.25);
 }
 
-a:visited{
-    color: var(--color-primary);
+a:visited {
+  color: var(--color-primary);
 }
 
 body {
-    background-color: var(--color-background);
-    width: 100vw;
-    height: 96vh;
-    font-family: "Inter", sans-serif;
-    font-size: 0.88rem;
-    user-select: none;
-    overflow-x: hidden;
-    color: var(--color-primary);
+  background-color: var(--color-background);
+  width: 100vw;
+  height: 96vh;
+  font-family: "Inter", sans-serif;
+  font-size: 0.88rem;
+  user-select: none;
+  overflow-x: hidden;
+  color: var(--color-primary);
 }
 
 ::-webkit-scrollbar {
@@ -222,7 +222,6 @@ nav .top .logo {
   -o-transform: scale3d(1.1, 1.1, 1.1);
 }
 
-
 .sidebar .anchor:hover {
   transform: scale3d(1.1, 1.1, 1.1);
   -webkit-transform: scale3d(1.1, 1.1, 1.1);
@@ -350,8 +349,8 @@ main table tbody tr:last-child td {
   gap: 0.8rem;
 }
 
-.center-customer{
-   padding-left: 8rem;
+.center-customer {
+  padding-left: 8rem;
 }
 
 /*--------------------- aside "Home" ---------------*/
@@ -942,8 +941,165 @@ input[type="number"]::-webkit-outer-spin-button {
   justify-content: flex-start;
 }
 
-
 .validation {
-    margin-top: 1rem;
-    color: var(--color-danger);
+  margin-top: 1rem;
+  color: var(--color-danger);
+}
+
+#menu-btn {
+  display: none;
+}
+
+/*--------- Media Queries ------*/
+@media screen and (max-width: 1200px) {
+  .container {
+    width: 94%;
+    grid-template-columns: 5rem auto;
+  }
+  .logo h1 {
+    display: none;
+  }
+  .sidebar a {
+    width: 5.6rem;
+  }
+  .sidebar h3 {
+    display: none;
+  }
+
+  .center-customer {
+    padding-left: 0;
+  }
+
+  nav {
+    display: block;
+  }
+
+  main .insights {
+    grid-template-columns: 1fr;
+    gap: 0.8rem;
+  }
+
+  .customers-list {
+    width: 82%;
+    position: absolute;
+    margin: 5rem 0 0 8.8rem;
+    left: 0;
+    top: 52%;
+  }
+
+  .customers-list table {
+    width: 98%;
+  }
+
+  .customer-name {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    flex-direction: column;
+    height: auto;
+  }
+
+  .customer-info {
+    width: 60%;
+  }
+
+  .container-profile {
+    grid-template-columns: auto;
+  }
+}
+
+@media screen and (max-width: 736px) {
+  .menu {
+    background-color: var(--color-background-secondary);
+  }
+
+  .center-customer {
+    padding-left: 0;
+  }
+
+  #menu-btn {
+    background-color: var(--color-background-secondary);
+  }
+
+  .container {
+    width: 100%;
+    grid-template-columns: 1fr;
+    margin-top: 0;
+  }
+
+  .container-profile {
+    grid-template-columns: 1fr;
+  }
+
+  .customer-info {
+    width: 80%;
+  }
+
+  .home-main {
+    grid-template-columns: 1fr;
+  }
+
+  nav {
+    position: fixed;
+    left: 0;
+    background-color: var(--color-background-secondary);
+    width: 18rem;
+    z-index: 3;
+    box-shadow: 1rem 3rem 4rem var(--color-light);
+    height: 100vh;
+    padding-left: var(--card-padding);
+    height: --webkit-fill-available;
+  }
+
+  #menu-btn {
+    display: block;
+  }
+
+  /* .top,
+  .sidebar {
+    display: none;
+  } */
+
+  nav .logo {
+    margin-left: 0.5rem;
+  }
+
+  .logo h1 {
+    display: inline;
+  }
+
+  .sidebar h3 {
+    display: inline;
+  }
+
+  .sidebar a {
+    width: 100%;
+    height: 3.4rem;
+  }
+
+  #close-btn {
+    display: block;
+  }
+
+  main {
+    padding: 0 1rem;
+  }
+
+  .transactions-main {
+    grid-column-start: auto;
+    grid-column-end: auto;
+  }
+
+  .customers-list {
+    width: 100%;
+    position: relative;
+    margin: 3rem 0 0 0;
+    left: 0;
+    top: 0;
+  }
+
+  .customers-list table {
+    width: 98%;
+    margin: 0;
+  }
 }
