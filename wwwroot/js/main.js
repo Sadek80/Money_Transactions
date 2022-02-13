@@ -5,9 +5,13 @@ var menu = document.getElementById('menu-btn');
 const startQueries = () => {
   let newQuery = window.matchMedia( 'screen and (max-width: 1200px)' )
   console.log(nav);
-  nav.style.display = 'block';
   
     var dates = document.querySelectorAll(".date");
+
+    if (newQuery.matches) {
+        nav.style.display = 'block';
+    }
+
     if(dates.length > 0){
       done = false;
       if(newQuery.matches && done == false){  
@@ -29,8 +33,10 @@ const startQueries = () => {
 const startMobileQueries = () => {
   let newQuery = window.matchMedia( 'screen and (max-width: 736px)' )
   console.log(nav);
-  
-  // nav.style.display = 'none';
+
+    if (newQuery.matches) {
+        nav.style.display = 'none';
+    }
 
     var transactio_main = document.querySelector(".transactions-main");
     console.log(transactio_main);
